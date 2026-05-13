@@ -1,0 +1,75 @@
+:root {
+  /* Colores de Marca y Acento (Estilo Dev Tool / AI) */
+  --bs-primary-border-subtle: rgba(0, 209, 255, 0.15); /* Borde cian muy sutil para dar efecto de panel de control */
+  --bs-accent-primary: #00FF88;     /* Verde neón/terminal. Ideal para botones, alertas de éxito o detalles clave */
+  --bs-accent-purple: #7000FF;      /* Púrpura eléctrico. Representa la Inteligencia Artificial, excelente para degradados */
+  
+  /* Textos: Máxima legibilidad prolongada (Anti-fatiga visual) */
+  --bs-primary-text-title: #F8FAFC;  /* Blanco ligeramente suave para que no deslumbre en pantallas grandes */
+  --bs-primary-text: #94A3B8;       /* Gris azulado (Slate), el estándar en editores de código para lectura cómoda */
+  
+  /* Estados y Acción */
+  --bs-active: #00D1FF;             /* Cian eléctrico "hielo" mantenido para enlaces o estados :hover */
+  
+  /* Fondos y Capas (Profundidad de IDE) */
+  --bs-background-primary: #0A0E17; /* Azul/Negro abisal, típico de temas oscuros profesionales */
+  --bs-primary-dark: #131B2B;       /* Un tono ligeramente más claro para resaltar tarjetas (Cards) o el NAV */
+
+  /* Fuentes (El cambio más crítico para la temática tecnológica) */
+  --font-display: 'Space Grotesk', 'Fira Code', monospace; /* Fuentes con aspecto técnico o de programación */
+  --font-body: 'Inter', 'Segoe UI', sans-serif; /* Limpia, moderna y perfecta para leer la crónica */
+}
+
+  
+  /* ==========================================================================
+     ESTILOS GLOBALES Y UTILIDADES
+     ========================================================================== */
+* {
+    font-family: var(--font-body);
+    font-style: normal;
+}
+
+body {
+    background-color: var(--bs-background-primary);
+    color: var(--bs-primary-text);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
+    
+    /* Mantenemos la sombra ligera para separar el texto del fondo */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Títulos: Con el cambio de fuente, se verán como comandos de terminal o headers técnicos */
+h1, h2, h3, .text-glass-title {
+    font-family: var(--font-display);
+    color: var(--bs-primary-text-title);
+    letter-spacing: -0.5px; /* Un espaciado más apretado da un look más moderno en fuentes tech */
+    text-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.8), 
+        0 4px 10px rgba(0, 209, 255, 0.1); /* Un levísimo brillo cian de fondo para el título */
+}
+
+/* Párrafos de la crónica en inglés */
+p, .text-glass-description {
+    color: var(--bs-primary-text);
+    line-height: 1.7; 
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8); 
+}
+
+/* Excepciones */
+.bi, i, .btn, .nav-link {
+    text-shadow: none !important; 
+}
+
+/* Destacados tecnológicos */
+.text-footer-active {
+    color: var(--bs-active);
+}
+
+.text-accent-neon {
+    color: var(--bs-accent-primary); /* Clase extra para resaltar palabras clave como "AutoDoc AI" en el texto */
+}
+
+
