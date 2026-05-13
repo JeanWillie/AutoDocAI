@@ -66,13 +66,77 @@
 
     <body>
 
-      <!--Header-->
-    <header>
-        
-    </header>
+ 
+                    <!-- Navigation Bar -->
+        <nav class="floating-nav">
+            <div class="nav-container">
+                <!-- Logo -->
+                <a href="#" class="nav-logo">
+                    <span class="text-accent-neon">&lt;/&gt;</span> AutoDoc <span class="ai-badge">AI</span>
+                </a>
+
+                <!-- Enlaces -->
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#past">The Struggle</a></li>
+                    <li><a href="#present">The Solution</a></li>
+                    <li><a href="#future">The Vision</a></li>
+                    <li><a href="#features">Features</a></li>
+                </ul>
+            </div>
+        </nav>
+
+                
 
       <!--MAIN-->
     <main>
+
+                <!-- HERO SECTION -->
+        <header class="hero-section" id="hero">
+            <!-- Efecto de iluminación de fondo -->
+            <div class="hero-glow" id="mouse-glow"></div>
+            <div class="hero-grid"></div>
+
+            <div class="hero-container">
+                <!-- Columna Izquierda: Copywriting -->
+                <div class="hero-content parallax" data-speed="-2">
+                    <div class="badge-tech">
+                        <span class="pulse-dot"></span> v2.0 - Next Gen AI
+                    </div>
+                    <h1 class="hero-title">
+                        Documentation <br>
+                        That <span class="text-accent-neon">Writes Itself.</span>
+                    </h1>
+                    <p class="hero-description text-glass-description">
+                        Step into the future of software development. AutoDoc AI analyzes your logical flow in real-time and generates flawless technical manuals. Say goodbye to technical debt and focus on what matters: coding.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#past" class="btn-primary">Initialize Journey <i class="bi bi-arrow-right"></i></a>
+                        <a href="#features" class="btn-secondary">View Specs</a>
+                    </div>
+                </div>
+
+                <!-- Columna Derecha: Interfaz Visual (Terminal Flotante) -->
+                <div class="hero-visual parallax" data-speed="3">
+                    <div class="glass-terminal floating-anim">
+                        <div class="terminal-header">
+                            <div class="terminal-buttons">
+                                <span class="close"></span>
+                                <span class="minimize"></span>
+                                <span class="maximize"></span>
+                            </div>
+                            <div class="terminal-title">AutoDoc_Engine.js</div>
+                        </div>
+                        <div class="terminal-body">
+                            <pre><code id="typewriter-code" class="code-text"></code><span class="cursor">_</span></pre>
+                            <div class="ai-status">
+                                <i class="bi bi-cpu"></i> AutoDoc AI: Generating UML Diagram... <span class="text-accent-neon">100%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
 
     </main>
 
