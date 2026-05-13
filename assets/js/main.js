@@ -154,7 +154,7 @@ cards.forEach(card => {
 
 
 // ==========================================
-// LOGIA SECTION: The solucion
+// LOGIA SECTION: The vision
 // ======================================
 // Añadir al final de main.js
 const canvas = document.getElementById('network-canvas');
@@ -206,3 +206,57 @@ function animateVision() {
 }
 
 animateVision();
+
+// ===============================================
+// SECTION FEATURES
+// ==========================================
+
+// Usamos una función autoejecutable para evitar conflictos de nombres (Scope)
+(function() {
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        // 1. Lógica de TILT (Inclinación) con validación
+        const featureCards = document.querySelectorAll('.f-card');
+        
+        if (featureCards.length > 0) {
+            featureCards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+
+                    const rotateX = (y - centerY) / 12; // Suavizado
+                    const rotateY = (centerX - x) / 12;
+
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)`;
+                });
+            });
+        }
+
+        // 2. Scroll Reveal con nombre único para no chocar con otros observers
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        if (revealElements.length > 0) {
+            const featureObserverOptions = { threshold: 0.15 };
+            
+            const featureRevealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        // Dejamos de observar una vez que ya se mostró
+                        featureRevealObserver.unobserve(entry.target);
+                    }
+                });
+            }, featureObserverOptions);
+
+            revealElements.forEach(el => featureRevealObserver.observe(el));
+        }
+    });
+})();
