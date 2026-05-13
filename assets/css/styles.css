@@ -893,3 +893,9 @@ SECTION: FEATURES (BENTO GRID)
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+.f-card .f-content h3{
+      font-size: 1.8rem; /* Título más imponente */
+    background: linear-gradient(90deg, #fff, var(--bs-accent-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
