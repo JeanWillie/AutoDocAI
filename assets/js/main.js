@@ -88,3 +88,66 @@ document.addEventListener("DOMContentLoaded", () => {
         setTimeout(typeWriter, 1000); // Pequeño retraso al cargar
     }
 });
+
+
+// ============================================
+//   LOGICA SECTION The Struggle
+// =============================================
+
+const chaosCard = document.getElementById('chaos-card');
+
+if (chaosCard) {
+    chaosCard.addEventListener('mousemove', (e) => {
+        const { left, top, width, height } = chaosCard.getBoundingClientRect();
+        const x = (e.clientX - left) / width - 0.5;
+        const y = (e.clientY - top) / height - 0.5;
+
+        // Inclinación dinámica
+        chaosCard.style.transform = `perspective(1000px) rotateY(${x * 20}deg) rotateX(${-y * 20}deg) scale(1.05)`;
+    });
+
+    chaosCard.addEventListener('mouseleave', () => {
+        chaosCard.style.transform = `perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1)`;
+    });
+}
+
+// ============================================
+//   LOGICA SECTION The Solution
+// =============================================
+// Agrega esto a tu main.js
+const cards = document.querySelectorAll('.feature-card');
+const coreIcon = document.querySelector('.core-icon');
+const engineContainer = document.querySelector('.ai-engine-container');
+const scanLine = document.querySelector('.scan-line');
+
+// Definición de estados (Iconos de Bootstrap e intensidades)
+const states = {
+    processing: { icon: 'bi-lightning-charge-fill', color: '#00FF88', speed: '1.5s' },
+    uml: { icon: 'bi-diagram-3-fill', color: '#00D1FF', speed: '4s' },
+    universal: { icon: 'bi-globe-americas', color: '#7000FF', speed: '6s' }
+};
+
+cards.forEach(card => {
+    card.addEventListener('click', () => {
+        const mode = card.getAttribute('data-mode');
+        
+        // 1. Cambiar clase activa en tarjetas
+        cards.forEach(c => c.classList.remove('active-card'));
+        card.classList.add('active-card');
+
+        // 2. Transición visual del núcleo
+        coreIcon.style.opacity = '0'; // Efecto de desvanecimiento
+        
+        setTimeout(() => {
+            // Cambiar icono y color según el objeto 'states'
+            coreIcon.className = `bi ${states[mode].icon} core-icon`;
+            coreIcon.style.color = states[mode].color;
+            coreIcon.style.filter = `drop-shadow(0 0 15px ${states[mode].color})`;
+            
+            // Ajustar velocidad de la línea de escaneo
+            scanLine.style.animationDuration = states[mode].speed;
+            
+            coreIcon.style.opacity = '1';
+        }, 300);
+    });
+});
