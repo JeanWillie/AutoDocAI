@@ -85,14 +85,22 @@ document.addEventListener("DOMContentLoaded", () => {
     document.addEventListener("mousemove", parallaxFunction);
 
     function parallaxFunction(e) {
-        document.querySelectorAll(".parallax").forEach(function(move) {
+        if(windows.innerWidth > 667){
+                  document.querySelectorAll(".parallax").forEach(function(move) {
             var speed = move.getAttribute("data-speed");
             var x = (window.innerWidth - e.pageX * speed) / 100;
             var y = (window.innerHeight - e.pageY * speed) / 100;
 
             move.style.transform = `translateX(${x}px) translateY(${y}px)`;
         });
+    } else  {
+        // En móvil, reseteamos el transform para que todo quede en su sitio
+        document.querySelectorAll(".parallax").forEach(function(move) {
+            move.style.transform = `translateX(0px) translateY(0px)`;
+        });
     }
+        }
+  
 
     // 3. Efecto Typewriter (Máquina de escribir) para el código
     const codeText = `function analyzeLogic(code) {\n  const structure = parse(code);\n  return generateUML(structure);\n}\n\n// AI AutoDoc initialized...`;

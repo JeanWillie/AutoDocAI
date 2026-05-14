@@ -442,6 +442,39 @@ p, .text-glass-description {
     .hero-title { font-size: 3rem; }
     .badge-tech { margin: 0 auto 1.5rem auto; }
     .hero-section {margin-top: 5rem;}
+
+    .hero-section {
+        /* Evita que cualquier movimiento de JS cree scroll horizontal */
+        overflow: hidden; 
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .hero-container { 
+        grid-template-columns: 1fr; 
+        text-align: center; 
+        width: 100%; /* Ocupa todo el ancho disponible */
+        padding: 0 20px; /* Margen interno de seguridad */
+        margin: 0 auto;
+        gap: 2rem;
+    }
+
+    /* Reset para los elementos parallax en móvil para que no se "vayan" */
+    .parallax {
+        transform: none !important; /* Desactiva el desplazamiento de JS si da problemas */
+    }
+
+    .hero-actions { 
+        justify-content: center; 
+        flex-direction: column; /* Apila botones si el espacio es muy pequeño */
+        align-items: center;
+    }
+    
+    .hero-title { font-size: 2.5rem; }
+
 }
 
 /* ==========================================================================
