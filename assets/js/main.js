@@ -260,3 +260,59 @@ animateVision();
         }
     });
 })();
+
+// ===========================
+// CTA SECTION
+// ========================
+
+
+// Efecto Magnético para el botón CTA
+const magneticButton = document.querySelector('.btn-magnetic-wrap');
+
+if (magneticButton) {
+    magneticButton.addEventListener('mousemove', (e) => {
+        const { left, top, width, height } = magneticButton.getBoundingClientRect();
+        
+        // Calculamos la posición del cursor respecto al centro del botón
+        const x = e.clientX - left - width / 2;
+        const y = e.clientY - top - height / 2;
+        
+        // El botón se mueve un 30% de la distancia del cursor
+        const moveX = x * 0.3;
+        const moveY = y * 0.3;
+        
+        const btn = magneticButton.querySelector('.btn-cta-primary');
+        btn.style.transform = `translate(${moveX}px, ${moveY}px)`;
+    });
+
+    magneticButton.addEventListener('mouseleave', () => {
+        const btn = magneticButton.querySelector('.btn-cta-primary');
+        btn.style.transform = `translate(0px, 0px)`;
+    });
+}
+
+// ==================================
+// FOOTER
+// ==================================
+
+// Lógica para el botón Back to Top
+const backToTopBtn = document.getElementById('back-to-top');
+
+if (backToTopBtn) {
+    // Mostrar u ocultar según el scroll
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 500) { // Si baja más de 500px
+            backToTopBtn.classList.add('visible');
+        } else {
+            backToTopBtn.classList.remove('visible');
+        }
+    });
+
+    // Acción al hacer clic
+    backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth' // Desplazamiento suave nativo
+        });
+    });
+}
