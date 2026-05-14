@@ -77,11 +77,24 @@ p, .text-glass-description {
     color: var(--bs-active);
 }
 
+.text-accent-neon-logo {
+    color: var(--bs-accent-primary);
+    font-weight: 600;
+    /* Efecto de brillo sutil para resaltar sobre el fondo oscuro */
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+
+    
+}
 .text-accent-neon {
     color: var(--bs-accent-primary);
     font-weight: 600;
     /* Efecto de brillo sutil para resaltar sobre el fondo oscuro */
     text-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+        text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    display: block;
+    
 }
 /* Color de acento Púrpura para secciones de IA / Futuro */
 .text-accent-purple {
@@ -428,6 +441,7 @@ p, .text-glass-description {
     .hero-actions { justify-content: center; }
     .hero-title { font-size: 3rem; }
     .badge-tech { margin: 0 auto 1.5rem auto; }
+    .hero-section {margin-top: 5rem;}
 }
 
 /* ==========================================================================
@@ -689,8 +703,22 @@ p, .text-glass-description {
     border: 1px solid transparent;
     border-radius: 16px;
     transition: all 0.3s ease;
+    position: relative;
+    z-index: 20;
+    touch-action: manipulation; 
+}
+.ai-engine-container, 
+.scan-line, 
+.core-ring, 
+.data-node {
+    pointer-events: none; /* Los clics pasarán "a través" de ellos */
 }
 
+/* 3. Asegura que el contenedor de info no sea bloqueado */
+.solution-info {
+    position: relative;
+    z-index: 15;
+}
 .feature-card:hover {
     background: rgba(112, 0, 255, 0.05);
     border-color: var(--bs-accent-purple);
@@ -714,7 +742,7 @@ p, .text-glass-description {
 /* ==========================================================================
    SECTION: THE VISION
    ========================================================================== */
-.vision-section {
+.vision-section {.
     background: radial-gradient(circle at center, #0f172a 0%, var(--bs-background-primary) 100%);
     padding: 120px 0;
     position: relative;
@@ -836,6 +864,51 @@ p, .text-glass-description {
     width: 100%; height: 100%;
     z-index: 1;
     pointer-events: none;
+}
+@media (max-width: 992px) {
+    .vision-section {
+        padding: 60px 0;
+    }
+
+    .vision-grid {
+        grid-template-columns: 1fr; /* Una sola columna */
+        gap: 2rem;
+    }
+
+    /* Redimensionar el contenedor visual para que no sea un bloque gigante */
+    .network-container {
+        height: 300px; /* Reducimos la altura en móvil */
+        order: -1; /* Ponemos la animación arriba del texto para impacto visual */
+        margin-bottom: 1rem;
+    }
+
+    /* Ajustar el tamaño de la órbita para que no se salga de la pantalla */
+    .orbit {
+        width: 250px;
+        height: 250px;
+    }
+
+    .central-node {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+
+    /* Hacer que las tarjetas de visión ocupen el ancho completo de forma elegante */
+    .v-card {
+        padding: 20px;
+        border-radius: 16px; /* Bordes completos en móvil para mejor look */
+        border-left: 4px solid var(--bs-accent-purple);
+        background: rgba(112, 0, 255, 0.05);
+    }
+
+    .vision-cards {
+        gap: 1rem;
+    }
+
+    .glitch-title {
+        font-size: 2rem; /* Título más manejable */
+    }
 }
 
 /* ==========================================================================

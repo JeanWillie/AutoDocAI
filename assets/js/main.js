@@ -159,7 +159,9 @@ const states = {
 };
 
 cards.forEach(card => {
-    card.addEventListener('click', () => {
+   card.addEventListener('click', (e) => {
+        // Evita que el clic se propague a otros elementos
+        e.stopPropagation();
         const mode = card.getAttribute('data-mode');
         
         // 1. Cambiar clase activa en tarjetas
