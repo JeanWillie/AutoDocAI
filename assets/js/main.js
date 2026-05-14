@@ -30,6 +30,37 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+//LOGICA NAV MOVIL
+
+const navToggle = document.querySelector('.nav-toggle');
+const navLinks = document.querySelector('.nav-links');
+const toggleIcon = navToggle.querySelector('i');
+
+if (navToggle) {
+    navToggle.addEventListener('click', () => {
+        // Toggle de la clase activa
+        navLinks.classList.toggle('nav-active');
+        
+        // Cambio de icono: de hamburguesa (list) a cerrar (x)
+        if (navLinks.classList.contains('nav-active')) {
+            toggleIcon.classList.replace('bi-list', 'bi-x');
+            navToggle.style.transform = 'rotate(90deg)';
+        } else {
+            toggleIcon.classList.replace('bi-x', 'bi-list');
+            navToggle.style.transform = 'rotate(0deg)';
+        }
+    });
+
+    // Cerrar el menú automáticamente al hacer clic en un enlace
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('nav-active');
+            toggleIcon.classList.replace('bi-x', 'bi-list');
+            navToggle.style.transform = 'rotate(0deg)';
+        });
+    });
+}
+
 // ===============================================
 // Logica HERO
 // ==============================================

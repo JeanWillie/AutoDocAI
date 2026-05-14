@@ -27,8 +27,16 @@
 * {
     font-family: var(--font-body);
     font-style: normal;
+    box-sizing: border-box;
 }
-
+html, body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    /* Esto corta cualquier elemento que intente salirse por los lados */
+    overflow-x: hidden; 
+    position: relative;
+}
 body {
     background-color: var(--bs-background-primary);
     color: var(--bs-primary-text);
@@ -39,6 +47,7 @@ body {
     
     /* Mantenemos la sombra ligera para separar el texto del fondo */
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    
 }
 
 /* Títulos: Con el cambio de fuente, se verán como comandos de terminal o headers técnicos */
@@ -161,16 +170,66 @@ p, .text-glass-description {
     text-shadow: 0 0 8px rgba(0, 209, 255, 0.4);
 }
 
-/* Ocultar menú en pantallas pequeñas por ahora (Responsive básico) */
+/* Estilos del botón Toggle (Oculto por defecto) */
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--bs-primary-text-title);
+    font-size: 1.8rem;
+    cursor: pointer;
+    z-index: 1001;
+    transition: transform 0.3s ease;
+}
+/* Responsivo para móviles */
 @media (max-width: 768px) {
-    .nav-links {
-        display: none; 
+    .nav-toggle {
+        display: block; /* Mostrar solo en móvil */
     }
+
     .floating-nav {
+        width: 90%;
+        border-radius: 25px;
+        padding: 0.8rem 1.2rem;
+    }
+
+    .nav-links {
+        /* Posicionamiento absoluto para el despliegue */
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: rgba(10, 14, 23, 0.95);
+        backdrop-filter: blur(20px);
+        border: 1px solid var(--bs-primary-border-subtle);
         border-radius: 20px;
+        
+        /* Layout vertical */
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        padding: 2rem 0;
+        
+        /* Animación de entrada: Oculto por defecto */
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-20px);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    /* Clase activa que inyectaremos con JS */
+    .nav-links.nav-active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .nav-links li a {
+        font-size: 1.1rem;
+        width: 100%;
+        text-align: center;
     }
 }
-
 /* ==========================================================================
    HERO SECTION & BACKGROUND EFFECTS
    ========================================================================== */
@@ -899,6 +958,7 @@ SECTION: FEATURES (BENTO GRID)
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
 /* ==========================================================================
    CTA STYLES
    ========================================================================== */
@@ -1043,6 +1103,10 @@ SECTION: FEATURES (BENTO GRID)
         width: 100%;
     }
 }
+
+
+
+
 
 /* ==========================================================================
    FOOTER STYLES
