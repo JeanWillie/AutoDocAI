@@ -1,9 +1,35 @@
 
   <!doctype html>
-  <html lang="es">
+  <html lang="en">
+    <!--1. HEAD -->
     <head>
+      <meta charset="UTF-8">
+        <!-- ==========================================================================
+     DOCUMENT SUMMARY
+     ==========================================================================
+     File: index.html
+     Description: Official website for AutoDoc AI.
+     
+     STRUCTURE OVERVIEW:
+     1. HEAD: Metatags, Fonts, Bootstrap CSS, Custom CSS.
+     2. HEADER: Navigation Bar.
+     3. HERO SECTION (id="hero"): Main introduction and terminal simulation.
+     4. MAIN CONTENT:
+        - THE STRUGGLE (id="past"): Problem statement.
+        - THE SOLUTION (id="present"): Features and benefits.
+        - THE VISION (id="future"): Future roadmap.
+        - TECHNICAL FEATURES (id="features"): Detailed tech specs.
+        - CTA (id="start"): Download call-to-action.
+     5. FOOTER: Navigation links, social media, copyright, developer credits.
+     6. ALERT MESSAGES
+     7. SCRIPTS: Bootstrap JS, Main JS.
+     
+     IMPORTANT SECTIONS FOR EDITING:
+     - HERO: Edit lines 113-119 for main copy.
+     - FEATURES: Edit lines 339-375 for tech details.
+     - FOOTER: Edit lines 424-497 for links and credits.
+     ========================================================================== -->
       <title>AutoDoc AI| Official Website </title>
-      <meta charset="UTF-8" >
       <meta name="viewport" content="width=device-width, initial-scale=1.0" >
       <meta
         name="title"
@@ -11,7 +37,7 @@
       >
       <meta
         name="description"
-        content="AutoDoc AI is an advanced plugin for Integrated Development Environments (IDEs) that acts as a "logical thought translator." Unlike current tools that only extract comments, this tool analyzes data flow and code architecture in real time to generate manuals, diagrams, and user guides without the programmer writing a single word of text."
+        content="AutoDoc AI is an advanced plugin for Integrated Development Environments (IDEs) that acts as a logical thought translator. Unlike current tools that only extract comments, this tool analyzes data flow and code architecture in real time to generate manuals, diagrams, and user guides without the programmer writing a single word of text."
       >
       <meta
         name="keywords"
@@ -30,16 +56,10 @@
       >
       <meta property="og:image" content="./assets/images/autodocai-meta-img.jpg" >
       <meta property="og:url" content="https://autodocai.com" >
-      <!--META TWITTER -->
-      <meta name="twitter:title" content="AutoDoc AI| Official Website >
-      <meta
-        name="twitter:description"
-        content=""
-      >
-        <meta
-          name="twitter:image"
-          content=""
-        >
+            <!--META TWITTER -->
+        <meta name="twitter:title" content="AutoDoc AI | Official Website">
+        <meta name="twitter:description" content="">
+        <meta name="twitter:image" content="">
             <!-- Preconexión para mejorar la velocidad de carga de las fuentes -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -70,7 +90,7 @@
     </head>
 
     <body>
-
+    <!--2. HEADER-->
         <header>
                         <!-- Navigation Bar -->
        <nav class="floating-nav">
@@ -80,12 +100,12 @@
             <span class="text-accent-neon-logo">&lt;/&gt;</span> AutoDoc <span class="ai-badge">AI</span>
         </a>
 
-        <!-- Botón Menú Hamburguesa (Solo visible en móvil) -->
+        <!-- Mobile Menu Toggle -->
         <button class="nav-toggle" aria-label="Toggle navigation">
             <i class="bi bi-list"></i>
         </button>
 
-        <!-- Enlaces -->
+        <!-- Navigation Links -->
         <ul class="nav-links">
             <li><a href="#hero">Home</a></li>
             <li><a href="#past">The Struggle</a></li>
@@ -98,14 +118,14 @@
 </nav>
         </header>
 
-                 <!-- HERO SECTION -->
+    <!--3. HERO SECTION: Main introduction -->
         <section class="hero-section pt-5 pt-lg-0 reveal" id="hero">
-            <!-- Efecto de iluminación de fondo -->
+            <!-- Background glow effect -->
             <div class="hero-glow" id="mouse-glow"></div>
             <div class="hero-grid"></div>
 
             <div class="hero-container">
-                <!-- Columna Izquierda: Copywriting -->
+                <!-- Left Column: Copywriting -->
                 <div class="hero-content parallax" data-speed="-2">
                     <div class="badge-tech">
                         <span class="pulse-dot reveal"></span> v2.0 - Next Gen AI
@@ -123,7 +143,7 @@
                     </div>
                 </div>
 
-                <!-- Columna Derecha: Interfaz Visual (Terminal Flotante) -->
+                <!-- Right Column: Visual Interface (Floating Terminal) -->
                 <div class="hero-visual parallax" data-speed="3">
                     <div class="glass-terminal floating-anim reveal">
                         <div class="terminal-header">
@@ -146,7 +166,7 @@
         </section>
                     
 
-      <!--MAIN-->
+      <!--4. MAIN CONTENT-->
     <main>
 
                 <!-- SECTION: THE STRUGGLE -->
@@ -158,7 +178,7 @@
                 </div>
 
                 <div class="struggle-grid">
-                    <!-- Columna de Texto (Narrativa en Inglés) -->
+                    <!-- Text Column -->
                     <div class="struggle-info reveal">
                         <h3 class="text-glass-title">The Era of Manual Struggle</h3>
                         <p class="text-glass-description">
@@ -180,7 +200,7 @@
                         </div>
                     </div>
 
-                    <!-- Columna Visual: El "Archivo Corrupto" Interactivo -->
+                    <!-- Visual Column: Interactive Corrupt File -->
                     <div class="struggle-visual reveal">
                         <div class="chaos-card" id="chaos-card">
                             <div class="card-overlay"></div>
@@ -197,7 +217,7 @@
                                     <div class="line glitch-line" style="width: 70%"></div>
                                 </div>
                             </div>
-                            <!-- Elementos flotantes de "error" -->
+                            <!-- Floating error elements -->
                             <div class="error-tag tag-1">OUTDATED</div>
                             <div class="error-tag tag-2">MISMATCH</div>
                         </div>
@@ -215,7 +235,7 @@
                 </div>
 
                 <div class="solution-grid">
-                    <!-- Interfaz del Motor de IA (Visual Interactivo) -->
+                    <!-- AI Engine Interface -->
                     <div class="solution-visual reveal">
                         <div class="ai-engine-container">
                             <div class="scan-line"></div>
@@ -225,7 +245,7 @@
                                 <i class="bi bi-cpu-fill core-icon"></i>
                             </div>
                             
-                            <!-- Nodos de Datos Flotantes -->
+                            <!-- Floating Data Nodes -->
                             <div class="data-node node-left">
                                 <i class="bi bi-code-slash"></i>
                                 <span>Input Code</span>
@@ -237,7 +257,7 @@
                         </div>
                     </div>
 
-                    <!-- Contenido de la Solución (Inglés) -->
+                    <!-- Solution Content -->
                     <div class="solution-info reveal">
                         <h3 class="text-glass-title">AutoDoc AI: Your New Standard</h3>
                         <p class="text-glass-description">
@@ -281,7 +301,7 @@
                 </div>
 
                 <div class="vision-grid">
-                    <!-- Contenido Narrativo (Inglés - Futuro) -->
+                    <!-- Narrative Content (Future) -->
                     <div class="vision-info reveal">
                         <h3 class="text-glass-title">The 2030 Roadmap</h3>
                         <p class="text-glass-description">
@@ -302,14 +322,14 @@
                         </div>
                     </div>
 
-                    <!-- Visual: Red Neuronal Interactiva -->
+                    <!-- Visual: Interactive Neural Network -->
                     <div class="vision-visual reveal">
                         <div class="network-container">
                             <div class="central-node">
                                 <div class="node-pulse"></div>
                                 <i class="bi bi-globe-americas"></i>
                             </div>
-                            <!-- Nodos Satelitales (Generados por CSS/JS) -->
+                            <!-- Satellite Nodes (Generated by CSS/JS) -->
                             <div class="orbit">
                                 <div class="satellite s1"><span>JS</span></div>
                                 <div class="satellite s2"><span>CSS</span></div>
@@ -337,7 +357,7 @@
                 <div class="features-grid">
                     <!-- Feature 1: Big Card -->
                     <div class="f-card f-main reveal" data-tilt>
-                        <!-- En la tarjeta f-main -->
+                        <!-- f-main card -->
                         <div class="f-icon-box"><i class="bi bi-cpu-fill"></i></div>
                         <div class="f-content">
                             <h3>Neural Syntax Analysis</h3>
@@ -377,11 +397,11 @@
         </section>
 
 
-                <!--SECTION: CTA-->
+                <!--SECTION: CTA (Call to Action)-->
         <section class="cta-section section-padding" id="start">
             <div class="container">
                 <div class="cta-wrapper reveal">
-                    <!-- Fondo Decorativo Interno -->
+                    <!-- Internal Decorative Background -->
                     <div class="cta-blob"></div>
                     <div class="cta-grid-overlay"></div>
 
@@ -394,12 +414,13 @@
                         </p>
 
                         <div class="cta-actions reveal">
-                            <!-- Botón Principal Magnético -->
-                            <a href="javascript:void(0)" onclick="showInfo('Download Extension', 'This button will start the download of the .vsix package compatible with VS Code, IntelliJ, and Cursor. In the production version, the extension automatically detects your operating system and recommends the appropriate installer.', 'bi-download', 'var(--bs-accent-primary)' )" class="btn-magnetic-wrap">
-                                <button class="btn-cta-primary">
-                                    <i class="bi bi-download"></i> Download v2.0.4
-                                </button>
-                            </a>
+                            <!-- Magnetic Primary Button -->
+                            
+                        <button 
+                        class="btn-cta-primary btn-magnetic-wrap"
+                        onclick="showInfo('Download Extension', 'This button will start the download of the .vsix package compatible with VS Code, IntelliJ, and Cursor. In the production version, the extension automatically detects your operating system and recommends the appropriate installer.', 'bi-download', 'var(--bs-accent-primary)')">
+                            <i class="bi bi-download"></i> Download v2.0.4
+                        </button>
                        
                         </div>
 
@@ -416,19 +437,15 @@
     </main>
 
 
-      <!-- Footer -->
-
-<!-- ==========================================================================
-     FOOTER SECTION
-     ========================================================================== -->
+      <!-- 5. Footer -->
 <footer class="modern-footer">
-    <!-- Efecto de brillo de fondo para coherencia visual -->
+  
     <div class="footer-glow"></div>
 
     <div class="container section-padding">
-        <!-- Grid Superior del Footer -->
+       
         <div class="footer-grid reveal">
-            <!-- Columna 1: Marca y Descripción -->
+            <!-- Columna 1: Brand And Descriptions -->
             <div class="footer-brand">
                 <a href="#" class="nav-logo">
                     <span class="text-accent-neon">&lt;/&gt;</span> AutoDoc <span class="ai-badge">AI</span>
@@ -438,9 +455,9 @@
                 </p>
             </div>
 
-            <!-- Columna 2: Navegación Rápida -->
+            <!-- Columna 2: Links -->
             <div class="footer-links">
-                <h4 class="footer-title">System Paths</h4>
+                <h3 class="footer-title">System Paths</h3>
                 <ul>
                     <li><a href="#hero">Initial State</a></li>
                     <li><a href="#past">The Struggle</a></li>
@@ -449,9 +466,9 @@
                 </ul>
             </div>
 
-            <!-- Columna 3: Recursos (Mockup) -->
+            <!-- Columna 3: Resources (Mockup) -->
             <div class="footer-links">
-                <h4 class="footer-title">Resources</h4>
+                <h3 class="footer-title">Resources</h3>
                 <ul>
                     <li><a href="javascript:void(0)" onclick="showInfo('API Endpoints', 'In a production environment, this would open the interactive documentation (e.g., Swagger) of our RESTful API for UML generation. For this evidence, the logic is executed at the client level.', 'bi-server', 'var(--bs-accent-primary)')">API Endpoints</a></li>
                     <li><a href="https://github.com/JeanWillie/AutoDocAI">GitHub Repo</a></li>
@@ -460,9 +477,9 @@
                 </ul>
             </div>
 
-            <!-- Columna 4: Conexión y Redes -->
+            <!-- Columna 4: Social -->
             <div class="footer-social">
-                <h4 class="footer-title">Network</h4>
+                <h3 class="footer-title">Network</h3>
                 <div class="social-icons">
                     <a href="https://github.com/JeanWillie" class="social-icon" aria-label="GitHub"><i class="bi bi-github"></i></a>
                     <a href="https://www.linkedin.com/in/jeanwillie/" class="social-icon" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
@@ -471,36 +488,37 @@
             </div>
         </div>
 
-        <!-- Línea separadora -->
+        <!-- Separator Line -->
         <div class="footer-divider"></div>
 
-        <!-- Grid Inferior: Copyright y Créditos de Desarrollador -->
+        <!-- Bottom grid: Copyright and developer credits -->
         <div class="footer-bottom">
             <div class="copyright">
                 <p>&copy; 2026 AutoDoc AI. All rights reserved.</p>
             </div>
             
-            <!-- Créditos Académicos y de Autor -->
+            <!-- Academic credits and Author -->
             <div class="developer-credits">
                 <p>Developed by: <span class="text-accent-neon">Jean Pierre Willie Jimenez</span></p>
                 <div class="academic-badge">
-                    <i class="bi bi-mortarboard-fill"></i> SENA - ADSO | Ficha 3389057
+                    <i class="bi bi-mortarboard-fill"></i> SENA | Number course: 3389057
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Botón Interactivo: Volver Arriba -->
+    <!-- Up button -->
     <button id="back-to-top" class="back-to-top" aria-label="Scroll to top">
         <i class="bi bi-chevron-up"></i>
     </button>
 </footer>
-    <!--Alertas Enlaces Footer-->
+
+    <!-- 6. Alert message-->
    <div id="custom-toast" class="custom-toast">
         <div class="toast-content">
             <i id="toast-icon" class="bi bi-info-circle-fill toast-icon"></i>
             <div class="toast-text">
-                <h5 id="toast-title">System Message</h5>
+                <h3 id="toast-title">System Message</h3>
                 <p id="toast-msg">Default message...</p>
             </div>
             <button onclick="closeToast()" class="btn-close-toast">&times;</button>
@@ -508,16 +526,11 @@
         <div class="toast-progress"></div>
     </div>
 
-</body>
-</html>
+
   
-  <!-- Bootstrap JavaScript Bundle (includes Popper) -->
-      <script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous" defer
-      ></script>
-      <!-- Main JavaScript (Funciones de scroll boton y animacion scroll web)-->
+  <!--7. Bootstrap JavaScript Bundle -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous" defer></script>
+      <!-- Main JavaScript-->
       <script src="assets/js/main.js" defer></script>
 
     </body>

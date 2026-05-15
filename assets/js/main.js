@@ -306,32 +306,28 @@ animateVision();
 // CTA SECTION
 // ========================
 
+//boton magnetico
 
-// Efecto Magnético para el botón CTA
 const magneticButton = document.querySelector('.btn-magnetic-wrap');
 
 if (magneticButton) {
     magneticButton.addEventListener('mousemove', (e) => {
         const { left, top, width, height } = magneticButton.getBoundingClientRect();
-        
-        // Calculamos la posición del cursor respecto al centro del botón
+
         const x = e.clientX - left - width / 2;
         const y = e.clientY - top - height / 2;
-        
-        // El botón se mueve un 30% de la distancia del cursor
+
         const moveX = x * 0.3;
         const moveY = y * 0.3;
-        
-        const btn = magneticButton.querySelector('.btn-cta-primary');
-        btn.style.transform = `translate(${moveX}px, ${moveY}px)`;
+
+        // Ahora el botón se mueve a sí mismo
+        magneticButton.style.transform = `translate(${moveX}px, ${moveY}px)`;
     });
 
     magneticButton.addEventListener('mouseleave', () => {
-        const btn = magneticButton.querySelector('.btn-cta-primary');
-        btn.style.transform = `translate(0px, 0px)`;
+        magneticButton.style.transform = `translate(0px, 0px)`;
     });
 }
-
 // ==================================
 // FOOTER
 // ==================================
