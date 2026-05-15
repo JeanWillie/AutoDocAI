@@ -250,14 +250,17 @@ p, .text-glass-description {
 
 .hero-glow {
     position: absolute;
+    top: 0;  /* ¡CLAVE! Define el origen en la esquina superior izquierda */
+    left: 0; /* ¡CLAVE! */
     width: 400px;
     height: 400px;
     background: radial-gradient(circle, rgba(112, 0, 255, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
     border-radius: 50%;
     pointer-events: none;
     z-index: 2;
-    transition: transform 0.1s ease-out;
+    transition: transform 0.1s ease-out; /* Ese 0.1s le da un retraso sutil muy elegante */
 }
+
 
 .hero-container {
     position: relative;
