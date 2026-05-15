@@ -1,3 +1,5 @@
+/* jshint esversion: 6 */
+
 /**
  * TABLE OF CONTENTS:
  * 1. Scroll Reveal Logic (Global)
@@ -180,41 +182,48 @@ const coreIcon = document.querySelector('.core-icon');
 const engineContainer = document.querySelector('.ai-engine-container');
 const scanLine = document.querySelector('.scan-line');
 
-// State definition (Bootstrap icons and colors)
 const states = {
     processing: { icon: 'bi-lightning-charge-fill', color: '#00FF88', speed: '1.5s' },
     uml: { icon: 'bi-diagram-3-fill', color: '#00D1FF', speed: '4s' },
     universal: { icon: 'bi-globe-americas', color: '#7000FF', speed: '6s' }
 };
 
+function applyMode(mode) {
+  
+    cards.forEach(c => c.classList.remove('active-card'));
+    document.querySelector(`[data-mode="${mode}"]`).classList.add('active-card');
+
+    coreIcon.style.opacity = '0';
+
+    setTimeout(() => {
+        coreIcon.className = `bi ${states[mode].icon} core-icon`;
+        coreIcon.style.color = states[mode].color;
+        coreIcon.style.filter = `drop-shadow(0 0 15px ${states[mode].color})`;
+        scanLine.style.animationDuration = states[mode].speed;
+        coreIcon.style.opacity = '1';
+
+        // Actualizar color del engineContainer según el modo activo
+        engineContainer.style.borderColor = states[mode].color;
+        engineContainer.style.boxShadow = `0 0 30px ${states[mode].color}40`;
+    }, 300);
+}
+
 cards.forEach(card => {
-   card.addEventListener('click', (e) => {
-        // Prevent event propagation
+    card.addEventListener('click', (e) => {
         e.stopPropagation();
         const mode = card.getAttribute('data-mode');
-        
-        // 1. Update active card class
-        cards.forEach(c => c.classList.remove('active-card'));
-        card.classList.add('active-card');
-
-        // 2. Core visual transition
-        coreIcon.style.opacity = '0'; // Fade effect
-        
-        setTimeout(() => {
-            // Change icon and color based on 'states' object
-            coreIcon.className = `bi ${states[mode].icon} core-icon`;
-            coreIcon.style.color = states[mode].color;
-            coreIcon.style.filter = `drop-shadow(0 0 15px ${states[mode].color})`;
-            
-            // Adjust scan line speed
-            scanLine.style.animationDuration = states[mode].speed;
-            
-            coreIcon.style.opacity = '1';
-        }, 300);
+        applyMode(mode);
     });
 });
 
-
+cards.forEach(card => {
+    card.addEventListener('touchend', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const mode = card.getAttribute('data-mode');
+        applyMode(mode);
+    });
+});
 // ===============================================
 // 7. The Vision Section Logic
 // ===============================================
@@ -376,7 +385,7 @@ if (backToTopBtn) {
 // 11. Toast Notification Logic
 // ===============================================
 
-let toastTimeout; // Controls timing for multiple alerts
+let toastTimeout;
 
 function showInfo(title, message, iconClass, color) {
     const toast = document.getElementById('custom-toast');
@@ -384,26 +393,21 @@ function showInfo(title, message, iconClass, color) {
     const titleElement = document.getElementById('toast-title');
     const progress = document.querySelector('.toast-progress');
 
-    // Clear previous timer
     clearTimeout(toastTimeout);
 
-    // Inject dynamic info
     titleElement.innerText = title;
     document.getElementById('toast-msg').innerText = message;
     
-    // Set icon and color
     iconElement.className = `bi ${iconClass} toast-icon`;
     iconElement.style.color = color;
     titleElement.style.color = color;
     progress.style.background = color;
 
-    // Reset animation and show
     toast.style.animation = 'none';
-    toast.offsetHeight; /* Trigger reflow to restart animation */
+    void toast.offsetHeight; 
     toast.style.display = 'block';
     toast.style.animation = 'slideIn 0.4s ease-out forwards';
 
-    // Auto close after 7 seconds
     toastTimeout = setTimeout(() => {
         closeToast();
     }, 7000);
@@ -414,5 +418,9 @@ function closeToast() {
     toast.style.animation = 'slideIn 0.4s ease-in reverse forwards';
     setTimeout(() => {
         toast.style.display = 'none';
-    }, 400); // Wait for animation to finish
+    }, 400);
 }
+
+
+window.showInfo = showInfo;
+window.closeToast = closeToast;
