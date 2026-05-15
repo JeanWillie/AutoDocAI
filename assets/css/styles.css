@@ -466,7 +466,7 @@ p, .text-glass-description {
     .hero-actions { justify-content: center; }
     .hero-title { font-size: 3rem; }
     .badge-tech { margin: 0 auto 1.5rem auto; }
-    .hero-section {margin-top: 5rem;}
+  
 
     .hero-section {
         /* Evita que cualquier movimiento de JS cree scroll horizontal */
@@ -476,6 +476,7 @@ p, .text-glass-description {
         justify-content: center;
         padding-left: 0;
         padding-right: 0;
+        margin-top: 2rem;
     }
 
     .hero-container { 
