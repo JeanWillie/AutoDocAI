@@ -7,7 +7,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0" >
       <meta
         name="title"
-        content="AutoDoc AI| Official Website "
+        content="AutoDoc AI | Official Website "
       >
       <meta
         name="description"
@@ -58,6 +58,11 @@
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
       media="print" onload="this.media='all'">
+
+      <!--Favicon-->
+        <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+
+        <link rel="icon" type="image/png" href="assets/img/favicon.svg" sizes="32x32">
 
       
       <!--Estilos CSS-->
@@ -149,7 +154,7 @@
             <div class="container section-padding">
                 <div class="section-header reveal">
                     <span class="text-accent-neon">Stage 01 | The Past: The Struggle </span>
-                    <h2 class="glitch-title" data-text="The Documentation Chaos">The Documentation Chaos</h2>
+                    <h2 class="glitch-title">The Documentation Chaos</h2>
                 </div>
 
                 <div class="struggle-grid">
@@ -206,7 +211,7 @@
             <div class="container section-padding">
                 <div class="section-header reveal">
                     <span class="text-accent-purple reveal">Stage 02 | The Present: The Solution</span>
-                    <h2 class="glitch-title" data-text="Seanless Intelligence">Seanless Intelligence</h2>
+                    <h2 class="glitch-title">Seanless Intelligence</h2>
                 </div>
 
                 <div class="solution-grid">
@@ -272,7 +277,7 @@
             <div class="container section-padding">
                 <div class="section-header reveal">
                     <span class="text-accent-neon">Stage 03 | The Future: The Vision</span>
-                    <h2 class="glitch-title" data-text="A World Without Barriers">A World Without Barriers</h2>
+                    <h2 class="glitch-title">A World Without Barriers</h2>
                 </div>
 
                 <div class="vision-grid">
@@ -385,19 +390,17 @@
                         <h2 class="cta-title reveal">Stop Writing Docs.<br><span class="text-accent-neon">Start Engineering.</span></h2>
                         <p class="cta-description reveal">
                             Join thousands of developers automating their logic analysis. 
-                            Download **AutoDoc AI** today and reclaim your focus.
+                            Download <span class="text-accent-neon-logo">AutoDoc AI</span> today and reclaim your focus.
                         </p>
 
                         <div class="cta-actions reveal">
                             <!-- Botón Principal Magnético -->
-                            <a href="#" class="btn-magnetic-wrap">
+                            <a href="javascript:void(0)" onclick="showInfo('Download Extension', 'This button will start the download of the .vsix package compatible with VS Code, IntelliJ, and Cursor. In the production version, the extension automatically detects your operating system and recommends the appropriate installer.', 'bi-download', 'var(--bs-accent-primary)' )" class="btn-magnetic-wrap">
                                 <button class="btn-cta-primary">
                                     <i class="bi bi-download"></i> Download v2.0.4
                                 </button>
                             </a>
-                            <a href="#" class="btn-cta-secondary">
-                                Try Online Demo <i class="bi bi-arrow-right"></i>
-                            </a>
+                       
                         </div>
 
                         <div class="cta-footer-info reveal">
@@ -450,10 +453,10 @@
             <div class="footer-links">
                 <h4 class="footer-title">Resources</h4>
                 <ul>
-                    <li><a href="#">API Endpoints</a></li>
+                    <li><a href="javascript:void(0)" onclick="showInfo('API Endpoints', 'En un entorno de producción, esto abriría la documentación interactiva (ej. Swagger) de nuestra API RESTful para la generación de UML. Para esta evidencia, la lógica se ejecuta a nivel de cliente.', 'bi-server', 'var(--bs-accent-primary)')">API Endpoints</a></li>
                     <li><a href="https://github.com/JeanWillie/AutoDocAI">GitHub Repo</a></li>
-                    <li><a href="#">NPM Package</a></li>
-                    <li><a href="#">System Logs</a></li>
+                    <li><a href="javascript:void(0)" onclick="showInfo('NPM Package', 'Aquí se mostraría la página del registro NPM para instalar el módulo vía consola (npm install autodoc-ai).', 'bi-box-seam', 'var(--bs-accent-purple)')">NPM Package</a></li>
+                    <li><a href="javascript:void(0)" onclick="showInfo('System Logs', 'En un servidor real, esto daría acceso a un dashboard de monitoreo (como Datadog o Kibana) para ver el rendimiento y errores. ', 'bi-terminal-dash', 'var(--bs-active)')">System Logs</a></li>
                 </ul>
             </div>
 
@@ -462,8 +465,8 @@
                 <h4 class="footer-title">Network</h4>
                 <div class="social-icons">
                     <a href="https://github.com/JeanWillie" class="social-icon" aria-label="GitHub"><i class="bi bi-github"></i></a>
-                    <a href="#" class="social-icon" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-                    <a href="#" class="social-icon" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+                    <a href="https://www.linkedin.com/in/jeanwillie/" class="social-icon" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                    <a href="https://x.com/JeanWillie__" class="social-icon" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
                 </div>
             </div>
         </div>
@@ -492,6 +495,21 @@
         <i class="bi bi-chevron-up"></i>
     </button>
 </footer>
+    <!--Alertas Enlaces Footer-->
+   <div id="custom-toast" class="custom-toast">
+        <div class="toast-content">
+            <i id="toast-icon" class="bi bi-info-circle-fill toast-icon"></i>
+            <div class="toast-text">
+                <h5 id="toast-title">System Message</h5>
+                <p id="toast-msg">Default message...</p>
+            </div>
+            <button onclick="closeToast()" class="btn-close-toast">&times;</button>
+        </div>
+        <div class="toast-progress"></div>
+    </div>
+
+</body>
+</html>
   
   <!-- Bootstrap JavaScript Bundle (includes Popper) -->
       <script

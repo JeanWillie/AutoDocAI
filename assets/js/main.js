@@ -357,3 +357,48 @@ if (backToTopBtn) {
         });
     });
 }
+
+// ==========================
+// LOGICA ALERTAS LINKS
+// ============================
+
+let toastTimeout; // Variable para controlar el tiempo y que no se crucen las alertas
+
+function showInfo(title, message, iconClass, color) {
+    const toast = document.getElementById('custom-toast');
+    const iconElement = document.getElementById('toast-icon');
+    const titleElement = document.getElementById('toast-title');
+    const progress = document.querySelector('.toast-progress');
+
+    // Limpiar el temporizador anterior si el usuario hace clic rápido en varios botones
+    clearTimeout(toastTimeout);
+
+    // Inyectar la información dinámica
+    titleElement.innerText = title;
+    document.getElementById('toast-msg').innerText = message;
+    
+    // Cambiar icono y color
+    iconElement.className = `bi ${iconClass} toast-icon`;
+    iconElement.style.color = color;
+    titleElement.style.color = color;
+    progress.style.background = color;
+
+    // Resetear animación y mostrar
+    toast.style.animation = 'none';
+    toast.offsetHeight; /* Trigger reflow para reiniciar animacion */
+    toast.style.display = 'block';
+    toast.style.animation = 'slideIn 0.4s ease-out forwards';
+
+    // Auto cerrar después de 7 segundos (tiempo suficiente para leer textos largos)
+    toastTimeout = setTimeout(() => {
+        closeToast();
+    }, 7000);
+}
+
+function closeToast() {
+    const toast = document.getElementById('custom-toast');
+    toast.style.animation = 'slideIn 0.4s ease-in reverse forwards';
+    setTimeout(() => {
+        toast.style.display = 'none';
+    }, 400); // Esperar a que termine la animación
+}
