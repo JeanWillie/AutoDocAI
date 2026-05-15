@@ -1,28 +1,46 @@
-//Logica aparicion suave (Scroll reveal)
+/**
+ * TABLE OF CONTENTS:
+ * 1. Scroll Reveal Logic (Global)
+ * 2. Navbar Scrolling Logic
+ * 3. Mobile Navigation Logic
+ * 4. Hero Section Logic
+ * 5. The Struggle Section Logic
+ * 6. The Solution Section Logic
+ * 7. The Vision Section Logic
+ * 8. Features Section Logic
+ * 9. CTA Section Logic
+ * 10. Footer & Back to Top Logic
+ * 11. Toast Notification Logic
+ */
 
+// ===============================================
+// 1. Scroll Reveal Logic (Global)
+// ===============================================
 const observerOptions = {
-        threshold: 0.15 // El elemento aparece cuando se ve el 15% de él
+        threshold: 0.15 
     };
 
     const revealOnScroll = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('active');
-                observer.unobserve(entry.target); // Deja de observar una vez que ya apareció
+                observer.unobserve(entry.target); 
             }
         });
     }, observerOptions);
 
-    // Seleccionamos todos los elementos que queremos que "aparezcan"
+    // Select all elements to reveal
     const elementsToReveal = document.querySelectorAll('.reveal');
     elementsToReveal.forEach(el => revealOnScroll.observe(el));
- 
-// Lógica para la barra de navegación flotante
+
+// ===============================================
+// 2. Navbar Scrolling Logic
+// ===============================================
 document.addEventListener('DOMContentLoaded', () => {
     const mainNavbar = document.getElementById('mainNavbar');
 
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) { // Cambia el valor '50' a la cantidad de scroll deseada
+        if (window.scrollY > 50) { 
             mainNavbar.classList.add('scrolled');
         } else {
             mainNavbar.classList.remove('scrolled');
@@ -30,7 +48,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-//LOGICA NAV MOVIL
+// ===============================================
+// 3. Mobile Navigation Logic
+// ===============================================
 
 const navToggle = document.querySelector('.nav-toggle');
 const navLinks = document.querySelector('.nav-links');
@@ -38,10 +58,10 @@ const toggleIcon = navToggle.querySelector('i');
 
 if (navToggle) {
     navToggle.addEventListener('click', () => {
-        // Toggle de la clase activa
+        // Toggle active class
         navLinks.classList.toggle('nav-active');
         
-        // Cambio de icono: de hamburguesa (list) a cerrar (x)
+        // Change icon: hamburger (list) to close (x)
         if (navLinks.classList.contains('nav-active')) {
             toggleIcon.classList.replace('bi-list', 'bi-x');
             navToggle.style.transform = 'rotate(90deg)';
@@ -51,7 +71,7 @@ if (navToggle) {
         }
     });
 
-    // Cerrar el menú automáticamente al hacer clic en un enlace
+    // Automatically close menu on link click
     document.querySelectorAll('.nav-links a').forEach(link => {
         link.addEventListener('click', () => {
             navLinks.classList.remove('nav-active');
@@ -62,11 +82,11 @@ if (navToggle) {
 }
 
 // ===============================================
-// Logica HERO
-// ==============================================
+// 4. Hero Section Logic
+// ===============================================
 
 document.addEventListener("DOMContentLoaded", () => {
-    // 1. Efecto Glow que sigue al ratón
+    // 4.1 Mouse Glow Effect
     const glow = document.getElementById("mouse-glow");
     const heroSection = document.getElementById("hero");
 
@@ -76,16 +96,17 @@ document.addEventListener("DOMContentLoaded", () => {
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
             
-            // Centrar el brillo en el cursor
+            // Center glow on cursor
             glow.style.transform = `translate(${x - 200}px, ${y - 200}px)`;
         });
     }
 
-    // 2. Efecto Parallax en movimiento del ratón
+    // 4.2 Mouse Parallax Effect
     document.addEventListener("mousemove", parallaxFunction);
 
     function parallaxFunction(e) {
-        if(windows.innerWidth > 667){
+        // Check if window width > 667px
+        if(window.innerWidth > 667){
                   document.querySelectorAll(".parallax").forEach(function(move) {
             var speed = move.getAttribute("data-speed");
             var x = (window.innerWidth - e.pageX * speed) / 100;
@@ -94,7 +115,7 @@ document.addEventListener("DOMContentLoaded", () => {
             move.style.transform = `translateX(${x}px) translateY(${y}px)`;
         });
     } else  {
-        // En móvil, reseteamos el transform para que todo quede en su sitio
+        // On mobile, reset transform
         document.querySelectorAll(".parallax").forEach(function(move) {
             move.style.transform = `translateX(0px) translateY(0px)`;
         });
@@ -102,7 +123,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
   
 
-    // 3. Efecto Typewriter (Máquina de escribir) para el código
+    // 4.3 Typewriter Effect
     const codeText = `function analyzeLogic(code) {\n  const structure = parse(code);\n  return generateUML(structure);\n}\n\n// AI AutoDoc initialized...`;
     const typeTarget = document.getElementById("typewriter-code");
     let i = 0;
@@ -111,9 +132,9 @@ document.addEventListener("DOMContentLoaded", () => {
         if (i < codeText.length) {
             typeTarget.innerHTML += codeText.charAt(i);
             i++;
-            setTimeout(typeWriter, 50); // Velocidad de escritura
+            setTimeout(typeWriter, 50); // Typing speed
         } else {
-            // Reiniciar animación después de unos segundos
+            // Reset animation after a few seconds
             setTimeout(() => {
                 typeTarget.innerHTML = '';
                 i = 0;
@@ -122,16 +143,16 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Iniciar el typewriter si el elemento existe
+    // Start typewriter if element exists
     if(typeTarget) {
-        setTimeout(typeWriter, 1000); // Pequeño retraso al cargar
+        setTimeout(typeWriter, 1000); // Small delay on load
     }
 });
 
 
-// ============================================
-//   LOGICA SECTION The Struggle
-// =============================================
+// ===============================================
+// 5. The Struggle Section Logic
+// ===============================================
 
 const chaosCard = document.getElementById('chaos-card');
 
@@ -141,7 +162,7 @@ if (chaosCard) {
         const x = (e.clientX - left) / width - 0.5;
         const y = (e.clientY - top) / height - 0.5;
 
-        // Inclinación dinámica
+        // Dynamic Tilt
         chaosCard.style.transform = `perspective(1000px) rotateY(${x * 20}deg) rotateX(${-y * 20}deg) scale(1.05)`;
     });
 
@@ -150,16 +171,16 @@ if (chaosCard) {
     });
 }
 
-// ============================================
-//   LOGICA SECTION The Solution
-// =============================================
-// Agrega esto a tu main.js
+// ===============================================
+// 6. The Solution Section Logic
+// ===============================================
+
 const cards = document.querySelectorAll('.feature-card');
 const coreIcon = document.querySelector('.core-icon');
 const engineContainer = document.querySelector('.ai-engine-container');
 const scanLine = document.querySelector('.scan-line');
 
-// Definición de estados (Iconos de Bootstrap e intensidades)
+// State definition (Bootstrap icons and colors)
 const states = {
     processing: { icon: 'bi-lightning-charge-fill', color: '#00FF88', speed: '1.5s' },
     uml: { icon: 'bi-diagram-3-fill', color: '#00D1FF', speed: '4s' },
@@ -168,24 +189,24 @@ const states = {
 
 cards.forEach(card => {
    card.addEventListener('click', (e) => {
-        // Evita que el clic se propague a otros elementos
+        // Prevent event propagation
         e.stopPropagation();
         const mode = card.getAttribute('data-mode');
         
-        // 1. Cambiar clase activa en tarjetas
+        // 1. Update active card class
         cards.forEach(c => c.classList.remove('active-card'));
         card.classList.add('active-card');
 
-        // 2. Transición visual del núcleo
-        coreIcon.style.opacity = '0'; // Efecto de desvanecimiento
+        // 2. Core visual transition
+        coreIcon.style.opacity = '0'; // Fade effect
         
         setTimeout(() => {
-            // Cambiar icono y color según el objeto 'states'
+            // Change icon and color based on 'states' object
             coreIcon.className = `bi ${states[mode].icon} core-icon`;
             coreIcon.style.color = states[mode].color;
             coreIcon.style.filter = `drop-shadow(0 0 15px ${states[mode].color})`;
             
-            // Ajustar velocidad de la línea de escaneo
+            // Adjust scan line speed
             scanLine.style.animationDuration = states[mode].speed;
             
             coreIcon.style.opacity = '1';
@@ -194,10 +215,9 @@ cards.forEach(card => {
 });
 
 
-// ==========================================
-// LOGIA SECTION: The vision
-// ======================================
-// Añadir al final de main.js
+// ===============================================
+// 7. The Vision Section Logic
+// ===============================================
 const canvas = document.getElementById('network-canvas');
 const ctx = canvas.getContext('2d');
 
@@ -231,7 +251,7 @@ function animateVision() {
         if(p.x < 0 || p.x > canvas.width) p.vx *= -1;
         if(p.y < 0 || p.y > canvas.height) p.vy *= -1;
 
-        // Dibujar líneas entre partículas cercanas
+        // Draw lines between nearby particles
         for(let j=index+1; j<particles.length; j++) {
             const p2 = particles[j];
             const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
@@ -249,14 +269,14 @@ function animateVision() {
 animateVision();
 
 // ===============================================
-// SECTION FEATURES
-// ==========================================
+// 8. Features Section Logic
+// ===============================================
 
-// Usamos una función autoejecutable para evitar conflictos de nombres (Scope)
+// Use IIFE to avoid scope naming conflicts
 (function() {
     document.addEventListener('DOMContentLoaded', () => {
         
-        // 1. Lógica de TILT (Inclinación) con validación
+        // 8.1 Tilt Effect
         const featureCards = document.querySelectorAll('.f-card');
         
         if (featureCards.length > 0) {
@@ -269,7 +289,7 @@ animateVision();
                     const centerX = rect.width / 2;
                     const centerY = rect.height / 2;
 
-                    const rotateX = (y - centerY) / 12; // Suavizado
+                    const rotateX = (y - centerY) / 12; // Smoothing
                     const rotateY = (centerX - x) / 12;
 
                     card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
@@ -281,7 +301,7 @@ animateVision();
             });
         }
 
-        // 2. Scroll Reveal con nombre único para no chocar con otros observers
+        // 8.2 Scroll Reveal
         const revealElements = document.querySelectorAll('.reveal');
         
         if (revealElements.length > 0) {
@@ -291,7 +311,7 @@ animateVision();
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('active');
-                        // Dejamos de observar una vez que ya se mostró
+                        // Stop observing once shown
                         featureRevealObserver.unobserve(entry.target);
                     }
                 });
@@ -302,12 +322,11 @@ animateVision();
     });
 })();
 
-// ===========================
-// CTA SECTION
-// ========================
+// ===============================================
+// 9. CTA Section Logic
+// ===============================================
 
-//boton magnetico
-
+// Magnetic button
 const magneticButton = document.querySelector('.btn-magnetic-wrap');
 
 if (magneticButton) {
@@ -320,7 +339,7 @@ if (magneticButton) {
         const moveX = x * 0.3;
         const moveY = y * 0.3;
 
-        // Ahora el botón se mueve a sí mismo
+        // Move button itself
         magneticButton.style.transform = `translate(${moveX}px, ${moveY}px)`;
     });
 
@@ -328,37 +347,36 @@ if (magneticButton) {
         magneticButton.style.transform = `translate(0px, 0px)`;
     });
 }
-// ==================================
-// FOOTER
-// ==================================
+// ===============================================
+// 10. Footer & Back to Top Logic
+// ===============================================
 
-// Lógica para el botón Back to Top
 const backToTopBtn = document.getElementById('back-to-top');
 
 if (backToTopBtn) {
-    // Mostrar u ocultar según el scroll
+    // Toggle visibility on scroll
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 500) { // Si baja más de 500px
+        if (window.scrollY > 500) { // If scrolled > 500px
             backToTopBtn.classList.add('visible');
         } else {
             backToTopBtn.classList.remove('visible');
         }
     });
 
-    // Acción al hacer clic
+    // Action on click
     backToTopBtn.addEventListener('click', () => {
         window.scrollTo({
             top: 0,
-            behavior: 'smooth' // Desplazamiento suave nativo
+            behavior: 'smooth' // Native smooth scrolling
         });
     });
 }
 
-// ==========================
-// LOGICA ALERTAS LINKS
-// ============================
+// ===============================================
+// 11. Toast Notification Logic
+// ===============================================
 
-let toastTimeout; // Variable para controlar el tiempo y que no se crucen las alertas
+let toastTimeout; // Controls timing for multiple alerts
 
 function showInfo(title, message, iconClass, color) {
     const toast = document.getElementById('custom-toast');
@@ -366,26 +384,26 @@ function showInfo(title, message, iconClass, color) {
     const titleElement = document.getElementById('toast-title');
     const progress = document.querySelector('.toast-progress');
 
-    // Limpiar el temporizador anterior si el usuario hace clic rápido en varios botones
+    // Clear previous timer
     clearTimeout(toastTimeout);
 
-    // Inyectar la información dinámica
+    // Inject dynamic info
     titleElement.innerText = title;
     document.getElementById('toast-msg').innerText = message;
     
-    // Cambiar icono y color
+    // Set icon and color
     iconElement.className = `bi ${iconClass} toast-icon`;
     iconElement.style.color = color;
     titleElement.style.color = color;
     progress.style.background = color;
 
-    // Resetear animación y mostrar
+    // Reset animation and show
     toast.style.animation = 'none';
-    toast.offsetHeight; /* Trigger reflow para reiniciar animacion */
+    toast.offsetHeight; /* Trigger reflow to restart animation */
     toast.style.display = 'block';
     toast.style.animation = 'slideIn 0.4s ease-out forwards';
 
-    // Auto cerrar después de 7 segundos (tiempo suficiente para leer textos largos)
+    // Auto close after 7 seconds
     toastTimeout = setTimeout(() => {
         closeToast();
     }, 7000);
@@ -396,5 +414,5 @@ function closeToast() {
     toast.style.animation = 'slideIn 0.4s ease-in reverse forwards';
     setTimeout(() => {
         toast.style.display = 'none';
-    }, 400); // Esperar a que termine la animación
+    }, 400); // Wait for animation to finish
 }
